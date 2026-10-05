@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="tg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color">#0A1440">
+<title>Ман — Қадами фардо</title>
+<style>
+*{box-sizing:border-box}
+:root{--lapis:#14246B;--night:#0A1440;--gold:#E8B22E;--ink:#0F1633;--mu:#566080;--ln:#D6DCEB;--bd:#C3CBDF;--bg:#EDF0F7;--tint:#E4E9F7;--ok:#0E8F82;--bad:#C93C3C}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",Arial,sans-serif;-webkit-text-size-adjust:100%}
+[hidden]{display:none!important}
+button,input{font:inherit}
+button{cursor:pointer;-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.w{max-width:920px;margin:auto;padding:0 18px}
+.hero{position:relative;color:#fff;padding:26px 0 50px;background:linear-gradient(135deg,#0A1440 0%,#1A3A7A 100%);border-bottom:3px solid var(--gold)}
+.lg{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px}
+h1{font-size:clamp(34px,8vw,48px);line-height:1.1;margin:20px 0 10px;font-weight:800;letter-spacing:-.5px}
+.hero p{margin:0;color:#BCC8EE;max-width:580px;font-size:16px}
+main.w{padding:28px 18px 56px}
+.card{background:#fff;border:1px solid var(--ln);border-radius:16px;padding:24px 22px;margin-bottom:16px;box-shadow:0 4px 12px rgba(10,20,64,0.06)}
+h2{font-size:22px;line-height:1.25;margin:0 0 10px;font-weight:700;letter-spacing:-.2px}
+.mu{color:var(--mu);margin:0;font-size:15px}
+#wiz{max-width:680px;border-top:4px solid var(--lapis)}
+.bars{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+.bars i{height:6px;border-radius:3px;background:var(--ln)}
+.bars i.dn{background:var(--lapis)}
+.bars i.on{background:var(--gold)}
+#sl{margin:0;color:var(--mu);font-size:13px;font-weight:600}
+label,.lb{display:block;font-weight:700;font-size:14px;margin:20px 0 8px}
+input{width:100%;height:52px;padding:0 14px;border:1.5px solid var(--bd);border-radius:10px;background:#fff;color:var(--ink);font-size:16px}
+input::placeholder{color:#8F99B3}
+input:focus{outline:0;border-color:var(--lapis);box-shadow:0 0 0 4px #E8B22E55}
+.r2{display:grid;gap:0 12px}
+@media(min-width:520px){.r2{grid-template-columns:1fr 1fr}}
+.btn{min-height:52px;padding:0 24px;border:0;border-radius:10px;background:var(--gold);color:var(--night);font-weight:700;transition:all .15s;box-shadow:0 4px 12px rgba(232,178,46,0.3)}
+.btn:hover{background:#F2C24F;transform:translateY(-2px);box-shadow:0 6px 16px rgba(232,178,46,0.4)}
+.btn:active{transform:translateY(0)}
+.btn.s{background:#fff;color:var(--lapis);border:1.5px solid var(--bd);box-shadow:none}
+.btn.s:hover{background:var(--tint);border-color:var(--lapis)}
+.acts{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap}
+.acts .btn{flex:1 1 140px}
+.err{color:var(--bad);font-weight:600;font-size:14px;min-height:22px;margin:10px 0 0}
+.cats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(min-width:560px){.cats{grid-template-columns:repeat(3,1fr)}}
+.cat{min-height:54px;display:flex;align-items:center;justify-content:space-between;border:1.5px solid var(--bd);background:#fff;color:var(--ink);border-radius:10px;padding:0 14px;font-weight:500;transition:all .2s}
+.cat:hover{border-color:var(--lapis);background:var(--tint)}
+.cat[aria-pressed=true]{background:var(--lapis);border-color:var(--lapis);color:#fff;font-weight:600}
+.cat[aria-pressed=true]:after{content:"✓";color:var(--gold);font-weight:800;font-size:18px}
+.hr{display:grid;grid-template-columns:54px 1fr 54px;gap:10px;align-items:center;padding:12px;background:var(--tint);border-radius:12px;border:1px solid var(--ln)}
+.hr button{height:54px;border:0;background:#fff;border-radius:50%;font-size:24px;color:var(--lapis);font-weight:600;box-shadow:0 2px 6px rgba(10,20,64,0.1)}
+.hr button:hover{background:var(--gold);color:var(--night)}
+.hr b{text-align:center;font-size:28px;font-variant-numeric:tabular-nums;font-weight:600}
+.tcs{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px}
+@media(min-width:480px){.tcs{grid-template-columns:repeat(4,1fr)}}
+.tc{min-height:44px;border:1.5px solid var(--bd);background:#fff;color:var(--ink);border-radius:10px;font-size:14px;font-weight:500;transition:all .2s;cursor:pointer}
+.tc:hover{background:var(--tint);border-color:var(--lapis)}
+.dys{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.dy{aspect-ratio:1;width:100%;max-width:56px;justify-self:center;padding:0;border:1.5px solid var(--bd);background:#fff;color:var(--ink);border-radius:50%;font-weight:700;font-size:13px;cursor:pointer;transition:all .2s}
+.dy:hover{border-color:var(--lapis);background:var(--tint)}
+.dy[aria-pressed=true]{background:var(--lapis);border-color:var(--lapis);color:var(--gold)}
+.sm{background:var(--tint);border-left:4px solid var(--gold);border-radius:6px 12px 12px 6px;padding:14px 16px;margin-top:20px;color:var(--lapis);font-size:14px;line-height:1.5}
+.gr{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.gr .card{margin:0}
+@media(max-width:768px){.gr{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.gr{grid-template-columns:1fr}}
+.kpi small{display:block;color:var(--mu);font-size:12px;font-weight:600;margin-bottom:4px}
+.kpi b{display:block;font-size:28px;line-height:1.2;color:var(--lapis);font-variant-numeric:tabular-nums;margin-bottom:8px}
+.kpi p{margin:0;font-size:13px;color:var(--mu)}
+.pb{height:8px;background:var(--ln);border-radius:4px;overflow:hidden;margin-top:8px}
+.pb i{display:block;height:100%;background:var(--gold);transition:width .3s}
+.wk{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:14px}
+.d{border:1.5px solid var(--ln);border-radius:12px;padding:10px 2px;text-align:center;font-size:12px;background:#fff;color:var(--mu);min-height:68px;display:flex;flex-direction:column;justify-content:center;transition:all .2s}
+.d b{display:block;font-size:14px;color:var(--ink);margin-bottom:4px}
+.d.rest{background:var(--bg);border-style:dashed;color:#999}
+.d.done{background:#DDF1EE;border-color:#8FCFC6;color:var(--ok);font-weight:600}
+.d.done b{color:var(--ok)}
+.d.miss{background:#fce4e1;color:var(--bad)}
+.d.miss b{color:var(--bad)}
+.d.today{border:2px solid var(--lapis);box-shadow:0 0 0 1px var(--ln)}
+.q{border-left:4px solid var(--gold);padding:2px 0 2px 16px;margin:16px 0;font-size:20px;line-height:1.4;font-weight:600;color:var(--lapis)}
+.bn{background:#FBF1D4;border:1px solid #EBD38C;border-left:4px solid var(--gold);border-radius:6px 12px 12px 6px;padding:14px 16px;margin-bottom:16px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;color:#5E4608;font-size:14px;line-height:1.5}
+.bn .btn{min-height:42px;margin:0}
+.note{font-size:14px;color:var(--mu);margin:16px 0 0;line-height:1.5}
+.stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:12px 0}
+.stat span{display:inline-block;background:var(--tint);padding:8px 12px;border-radius:8px;font-size:13px;font-weight:600;color:var(--lapis)}
+#toast{position:fixed;left:50%;bottom:max(20px,env(safe-area-inset-bottom));transform:translate(-50%,30px);background:var(--night);color:#fff;padding:14px 18px;border-left:4px solid var(--gold);border-radius:6px 12px 12px 6px;max-width:min(92vw,520px);opacity:0;pointer-events:none;transition:.3s;z-index:9}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:560px){.card{padding:20px 16px}.d{font-size:0;min-height:62px;padding:10px 0}.d b{font-size:13px}.d:after{content:"○";display:block;margin-top:6px;font-size:15px;color:#98A2BF}.d.done:after{content:"✓";color:var(--ok);font-weight:800}.d.rest:after{content:"–"}.d.miss:after{content:"×";color:var(--bad);font-weight:800}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="hero">
+<div class="w">
+<div class="lg">📌 <span>Ман — Қадами фардо</span></div>
+<h1>Орзуат ба воқеъият</h1>
+<p>Мақсади худро муайян кунед ва ҳар рӯз як қадам ба сӯи онҷо қадам барабарӣ кунед.</p>
+</div>
+</header>
+
+<main class="w">
+<div id="wiz" class="card">
+<div class="bars"><i></i><i></i><i></i><i></i></div>
+<p id="sl"></p>
+
+<div id="p1">
+<h2>Огоҳиномаҳо фаъол кунед</h2>
+<p class="mu">Браузер аз шумо иҷозат мепурсад. Ёдрас дар вақти интихобкардаатон таъмин карда мешавад.</p>
+<p id="ps" class="note"></p>
+<div class="acts"><button class="btn" id="ok1">Иҷозат додан</button><button class="btn s" id="sk1">Баъдтар</button></div>
+</div>
+
+<div id="p2" hidden>
+<h2>Шиносоӣ</h2>
+<p class="mu">Ном, насаб ва синну солатонро дохил кунед.</p>
+<div class="r2">
+<div><label for="fn">Ном</label><input id="fn" maxlength="30" autocomplete="given-name"></div>
+<div><label for="sn">Насаб</label><input id="sn" maxlength="30" autocomplete="family-name"></div>
+</div>
+<label for="ag">Синну сол</label>
+<input id="ag" type="number" inputmode="numeric" min="5" max="99" placeholder="Масалан: 18">
+<p class="err" id="e2"></p>
+<div class="acts"><button class="btn s" id="b2">Бозгашт</button><button class="btn" id="n2">Идома</button></div>
+</div>
+
+<div id="p3" hidden>
+<h2>Орзуи шумо кадом аст?</h2>
+<p class="mu">Як самт интихоб кунед ва орзуи худро нависед.</p>
+<div class="lb">Соҳаҳо</div>
+<div class="cats" id="cats"></div>
+<label for="dr">Орзуи ман</label>
+<input id="dr" maxlength="120" placeholder="Масалан: Барномасози касбӣ шавам">
+<p class="err" id="e3"></p>
+<div class="acts"><button class="btn s" id="b3">Бозгашт</button><button class="btn" id="n3">Идома</button></div>
+</div>
+
+<div id="p4" hidden>
+<h2>Нақшаи ҳаррӯза</h2>
+<p class="mu">Узви рӯзонаи худро ба сӯи мақсадатон тартиб диҳед.</p>
+<label for="act">Ҳар рӯз чӣ кор мекунед?</label>
+<input id="act" maxlength="80" placeholder="Масалан: Барномасоз кодговӣ омӯхтан">
+<div class="lb">Соатҳо дар як рӯз</div>
+<div class="hr"><button type="button" id="mn" aria-label="Кам кардан">−</button><b id="hv"></b><button type="button" id="pl" aria-label="Зиёд кардан">+</button></div>
+<label for="tm">Вақти мубаллағ</label>
+<input id="tm" type="time" value="18:00">
+<div class="tcs" id="tcs"></div>
+<div class="lb">Рӯзҳои корӣ</div>
+<div class="dys" id="dys"></div>
+<div class="sm" id="sm"></div>
+<p class="err" id="e4"></p>
+<div class="acts"><button class="btn s" id="b4">Бозгашт</button><button class="btn" id="sv">Сохтан</button></div>
+</div>
+</div>
+
+<div id="dash" hidden></div>
+</main>
+<div id="toast" role="status"></div>
+
+<script>
+const $=s=>document.querySelectorAll(s)[0],$$=s=>document.querySelectorAll(s),pad=n=>String(n).padStart(2,'0'),KEY='mkf_plan_v2';
+const DN=['Якш','Дошанбе','Сешанбе','Чоршанбе','Панҷшанбе','Ҷум','Шан'],DS=['Я','Д','С','Ч','П','Ҷ','Ш'],ORD=[1,2,3,4,5,6,0];
+const C=[['💻 Барномасоз','Код ё веб-сайтҳо омӯхтан'],['⚙️ Муҳандис','Математика ва физика омӯхтан'],['📚 Омӯзгор','Фан ё методика омӯхтан'],['🎨 Тарроҳ','Дизайн ва тасвирсозӣ омӯхтан'],['💼 Соҳибкор','Фин ва соҳибкорӣ омӯхтан'],['🌍 Забондон','Забони хориҷӣ омӯхтан'],['⚽ Варзишгар','Машқҳои варзишӣ мекаштам'],['✨ Дигар','']];
+const TC=[['Сабҳ','07:00'],['Чашҭ','14:00'],['Шом','18:00'],['Шоми дер','21:00']];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>'&#'+c.charCodeAt(0)+';'),fmt=h=>String(h).replace('.',','),iso=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+const D0=()=>({fn:'',sn:'',age:'',dream:'',cat:null,act:'',h:2,time:'18:00',days:[1,2,3,4,5,6]});
+let mem=null,D=D0();
+const load=()=>{try{return JSON.parse(localStorage.getItem(KEY))||mem}catch(e){return mem}};
+const save=p=>{mem=p;try{localStorage.setItem(KEY,JSON.stringify(p))}catch(e){}};
+const perm=()=>'Notification' in window?Notification.permission:'unsupported';
+
+if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol))navigator.serviceWorker.register('sw.js').catch(()=>{});
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(t.k);t.k=setTimeout(()=>t.classList.remove('show'),6000)}
+async function ask(){try{await Notification.requestPermission()}catch(e){}$('#ps').textContent=perm()=='granted'?'Огоҳинома фаъол шуд.':'Иҷозат дода нашуд. Мумкин аст баъдан фаъол кунед.'}
+async function showN(t,b){if(perm()!='granted')return;try{const r=await navigator.serviceWorker.getRegistration();if(r){await r.showNotification(t,{body:b,tag:'mkf'});return}}catch(e){}try{new Notification(t,{body:b,tag:'mkf'})}catch(e){}}
+function notify(p,t){const a=t?'Санҷиш':'Вақти омӯзиш, '+p.fn+'!',b=p.act+' — имрӯз '+fmt(p.h)+' соат.';toast(a+' '+b);showN(a,b)}
+function go(n){[1,2,3,4].forEach(i=>$('#p'+i).hidden=i!=n);$$('.bars i').forEach((b,i)=>b.className=i<n-1?'dn':i==n-1?'on':'');$('#sl').textContent='Қадами '+n+' аз 4'}
+function upd(){$$('.dy').forEach(b=>b.setAttribute('aria-pressed',D.days.includes(+b.dataset.d)));$('#hv').textContent=fmt(D.h)+' с.';const n=D.days.length,r=ORD.filter(d=>!D.days.includes(d)).map(d=>DN[d]);$('#sm').textContent=n?'Ҳафта: '+n+' р. × '+fmt(D.h)+' с. = '+fmt(n*D.h)+' с. | Истироҳат: '+(r.length?r.join(', '):'нест')+'.':'Ғалтак як рӯз.'}
+function fill(){$('#fn').value=D.fn;$('#sn').value=D.sn;$('#ag').value=D.age;$('#dr').value=D.dream;$('#act').value=D.act;$('#tm').value=D.time;$$('.cat').forEach((b,i)=>b.setAttribute('aria-pressed',i===D.cat));upd()}
+function build(){$('#cats').innerHTML=C.map((c,i)=>`<button type="button" class="cat" aria-pressed="false" data-i="${i}">${c[0]}</button>`).join('');$('#dys').innerHTML=ORD.map(d=>`<button type="button" class="dy" data-d="${d}" aria-pressed="false">${DS[d]}</button>`).join('');$('#tcs').innerHTML=TC.map(t=>`<button type="button" class="tc" data-t="${t[1]}">${t[0]} ${t[1]}</button>`).join('');$('#cats').onclick=e=>{const b=e.target.closest('.cat');if(!b)return;const i=+b.dataset.i,a=$('#act'),prev=D.cat!=null?C[D.cat][1]:'';if(!a.value||a.value==prev)a.value=C[i][1];D.cat=i;$$('.cat').forEach((x,j)=>x.setAttribute('aria-pressed',j==i))};$('#dys').onclick=e=>{const b=e.target.closest('.dy');if(!b)return;const d=+b.dataset.d;D.days=D.days.includes(d)?D.days.filter(x=>x!=d):D.days.concat(d);upd()};$('#tcs').onclick=e=>{const b=e.target.closest('.tc');if(b)$('#tm').value=b.dataset.t};$('#mn').onclick=()=>{D.h=Math.max(.5,D.h-.5);upd()};$('#pl').onclick=()=>{D.h=Math.min(12,D.h+.5);upd()};$('#ok1').onclick=()=>ask().then(()=>setTimeout(()=>go(2),perm()=='granted'?500:1500));$('#sk1').onclick=()=>go(2);$('#b2').onclick=()=>go(1);$('#b3').onclick=()=>go(2);$('#b4').onclick=()=>go(3);$('#n2').onclick=()=>{D.fn=$('#fn').value.trim();D.sn=$('#sn').value.trim();D.age=Math.round(+$('#ag').value);const e=$('#e2');if(D.fn.length<2){e.textContent='Номро нависед.';return}if(D.sn.length<2){e.textContent='Насабро нависед.';return}if(!(D.age>=5&&D.age<=99)){e.textContent='Синну сол: 5-99.';return}e.textContent='';go(3)};$('#n3').onclick=()=>{D.dream=$('#dr').value.trim();if(!D.dream){$('#e3').textContent='Орзуро нависед.';return}$('#e3').textContent='';go(4)};$('#sv').onclick=()=>{D.act=$('#act').value.trim();D.time=$('#tm').value;const e=$('#e4');if(!D.act){e.textContent='Кор нависед.';return}if(!D.time){e.textContent='Вақт интихоб кунед.';return}if(!D.days.length){e.textContent='Рӯз интихоб кунед.';return}e.textContent='';const o=load()||{};save({fn:D.fn,sn:D.sn,age:D.age,dream:D.dream,cat:D.cat,act:D.act,h:D.h,time:D.time,days:D.days,done:o.done||{},last:o.last||''});$('#wiz').hidden=true;$('#dash').hidden=false;dash();scrollTo(0,0)};if(perm()=='unsupported'){$('#ok1').hidden=true;$('#sk1').textContent='Идома';$('#ps').textContent='Огоҳинома ғайрифаъол. Қалк ё календар истифода баред.'}}
+function nextR(p){const n=new Date(),[h,m]=p.time.split(':').map(Number);for(let i=0;i<8;i++){const d=new Date(n);d.setDate(n.getDate()+i);d.setHours(h,m,0,0);if(p.days.includes(d.getDay())&&d>n)return(i==0?'Имрӯз':i==1?'Фардо':DN[d.getDay()])+' '+p.time}return'—'}
+function streak(p){let s=0;const n=new Date();for(let i=0;i<400;i++){const d=new Date(n);d.setDate(n.getDate()-i);if(!p.days.includes(d.getDay()))continue;if(p.done[iso(d)])s++;else if(i>0)break}return s}
+function week(p){const n=new Date(),t=iso(n),m=new Date(n);m.setDate(n.getDate()-(n.getDay()+6)%7);let dn=0;const cells=ORD.map((dw,i)=>{const d=new Date(m);d.setDate(m.getDate()+i);const k=iso(d),w=p.days.includes(dw),x=p.done[k];if(w&&x)dn++;const c=!w?'rest':x?'done':k<t?'miss':'';return`<div class="d ${c}${k==t?' today':''}"><b>${DN[dw]}</b>${!w?'–':x?'✓':fmt(p.h)+' с.'}</div>`}).join('');return{cells,dn}}
+function dash(){const p=load();if(!p)return;const n=new Date(),k=iso(n),w=p.days.includes(n.getDay()),x=p.done[k],[hh,mm]=p.time.split(':').map(Number),late=n.getHours()*60+n.getMinutes()>hh*60+mm;const wk=week(p),pl=p.days.length*p.h,dn=wk.dn*p.h,s=perm();const today=!w?'Имрӯз истироҳат':x?'Омила!':late?'Бозбов кунед':'Соат '+p.time;let bn='';if(s=='default')bn='<div class="bn"><span>Огоҳинома банд</span><button class="btn" onclick="ask().then(()=>dash())">Фаъол кун</button></div>';else if(s=='denied')bn='<div class="bn"><span>Браузер манъ кард. Танзимоти сайтро коҳиш диҳед.</span></div>';else if(s=='unsupported')bn='<div class="bn"><span>Огоҳинома ғайрифаъол. Қалк ё календар истифода баред.</span></div>';$('#dash').innerHTML=bn+`<div class="card"><h2>Салом, ${esc(p.fn)}! 👋</h2><p class="mu">${esc(p.fn)} ${esc(p.sn)} · ${p.age}</p></div><div class="card"><h2>Имрӯз, ${DN[n.getDay()]}</h2><p class="mu">${esc(today)}</p>${w?`<div class="acts"><button class="btn${x?' s':''}" onclick="tg()">${x?'Буниён кун':'Иҷро шуд'}</button></div>`:''}</div><div class="gr"><div class="card kpi"><small>🔥 Силсила</small><b>${streak(p)}</b><p>рӯзи зино</p></div><div class="card kpi"><small>📊 Ҳафта</small><b>${fmt(dn)}/${fmt(pl)}</b><p>соат</p><div class="pb"><i style="width:${pl?Math.round(dn/pl*100):0}%"></i></div></div><div class="card kpi"><small>⏰ Бошанда</small><b>${nextR(p)}</b><p>ёдрас</p></div></div><div class="card"><h2>Ҳафтаи ман</h2><div class="wk">${wk.cells}</div></div><div class="card"><h2>🎯 Мақсад</h2><p class="q">«${esc(p.dream)}»</p><p class="mu">Ҳар рӯз: ${esc(p.act)} · ${fmt(p.h)} соат · ${p.time}</p><div class="acts"><button class="btn s" onclick="testN()">Санҷиш</button><button class="btn s" onclick="ics()">Қалк</button><button class="btn s" onclick="edit()">Табдил</button></div><p class="note">Огоҳинома ҳангоми кушода коҳиш медиҳад. Қалкро илова кунед барои ёдрасҳои доимӣ.</p><p class="note"><button class="btn s" style="min-height:40px" onclick="reset()">Пас кун</button></p></div>`}
+function tg(){const p=load(),k=iso(new Date());if(p.done[k])delete p.done[k];else p.done[k]=1;save(p);dash()}
+function testN(){const p=load();if(perm()=='default')ask().then(()=>{notify(p,1);dash()});else notify(p,1)}
+function edit(){const p=load();D={fn:p.fn,sn:p.sn,age:p.age,dream:p.dream,cat:p.cat==null?null:p.cat,act:p.act,h:p.h,time:p.time,days:p.days.slice()};fill();$('#wiz').hidden=false;$('#dash').hidden=true;go(2);scrollTo(0,0)}
+function reset(){if(!confirm('Ҳамаро пас кун?'))return;mem=null;try{localStorage.removeItem(KEY)}catch(e){}D=D0();fill();$('#wiz').hidden=false;$('#dash').hidden=true;go(perm()=='default'?1:2);scrollTo(0,0)}
+function ics(){const p=load(),[hh,mm]=p.time.split(':').map(Number);let s=new Date();for(let i=0;i<8;i++){const d=new Date();d.setDate(d.getDate()+i);d.setHours(hh,mm,0,0);if(p.days.includes(d.getDay())&&(i>0||d>new Date())){s=d;break}}const f=d=>d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate())+'T'+pad(d.getHours())+pad(d.getMinutes())+'00',x=t=>t.replace(/[\\;,]/g,'\\$&'),e=new Date(s.getTime()+p.h*36e5),by=p.days.map(d=>['SU','MO','TU','WE','TH','FR','SA'][d]).join(','),st=new Date().toISOString().replace(/[-:]|\.\d{3}/g,'');const L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Man-Qadami-Fardo//TJ','BEGIN:VEVENT','UID:'+Date.now()+'@mqf','DTSTAMP:'+st,'DTSTART:'+f(s),'DTEND:'+f(e),'RRULE:FREQ=WEEKLY;BYDAY='+by,'SUMMARY:'+x(p.act),'DESCRIPTION:'+x('Орзу: '+p.dream),'BEGIN:VALARM','TRIGGER:PT0S','ACTION:DISPLAY','DESCRIPTION:'+x('Вақти омӯзиш'),'END:VALARM','END:VEVENT','END:VCALENDAR'];const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([L.join('\r\n')],{type:'text/calendar;charset=utf-8'}));a.download='man-qadami-fardo.ics';document.body.append(a);a.click();a.remove();toast('Қалк омода. Илова кунед.')}
+function tick(){const p=load();if(!p)return;const n=new Date(),k=iso(n),[hh,mm]=p.time.split(':').map(Number),a=n.getHours()*60+n.getMinutes(),b=hh*60+mm;if(p.days.includes(n.getDay())&&p.last!=k&&a>=b&&a<b+90&&!p.done[k]){p.last=k;save(p);notify(p);if(!$('#dash').hidden)dash()}const e=$('#nx');if(e)e.textContent=nextR(p)}
+build();fill();if(load()){$('#wiz').hidden=true;$('#dash').hidden=false;dash()}else go(perm()=='default'?1:2);setInterval(tick,15000);document.addEventListener('visibilitychange',tick);tick();
+</script>
+</body>
+</html>
